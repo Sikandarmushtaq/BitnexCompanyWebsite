@@ -108,7 +108,7 @@ function TechnologyLogo({ technology }) {
         src={`https://cdn.simpleicons.org/${technology.icon}/${technology.color}`}
         alt={technology.name}
         loading="lazy"
-        className="h-7 w-7 object-contain transition-transform duration-500 group-hover:scale-110"
+        className="object-contain transition-transform duration-500 h-7 w-7 group-hover:scale-110"
         onError={(event) => {
           event.currentTarget.style.display = 'none'
           event.currentTarget.nextElementSibling.style.display = 'grid'
@@ -209,48 +209,32 @@ export default function Technologies() {
     categories[0]
 
   return (
-    <section className="relative isolate flex min-h-[100svh] w-full items-center overflow-hidden bg-[#050807] py-20 text-white sm:py-24">
-      {/* Background atmosphere */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_50%_0%,rgba(69,190,179,0.11),transparent_48%),radial-gradient(ellipse_at_90%_90%,rgba(69,190,179,0.055),transparent_42%)]"
-      />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.035]"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.35) 1px, transparent 1px)',
-          backgroundSize: '65px 65px',
-        }}
-      />
-
-      <div className="container-x relative z-10 mx-auto w-full">
+    <section className="relative isolate flex min-h-[100svh] w-full items-center overflow-hidden bg-[#000000] py-20 text-white sm:py-24">
+      <div className="relative z-10 w-full mx-auto container-x">
         {/* Heading */}
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="max-w-3xl mx-auto text-center">
           <span className="font-display text-xs font-semibold uppercase tracking-[0.28em] text-[#45BEB3]">
             Our Technology Stack
           </span>
 
           <h2 className="mt-4 font-display text-[clamp(2.8rem,6.5vw,6rem)] font-extrabold leading-[0.92] tracking-[-0.055em] text-white">
             Technologies
-            <span className="block text-transparent [ -webkit-text-stroke:1.5px_rgba(255,255,255,0.85)]">
+            <span className="block text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.85)]">
               We Use<span className="text-[#45BEB3]">.</span>
             </span>
           </h2>
 
-          <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-white/50 sm:text-base">
+          <p className="max-w-xl mx-auto mt-5 text-sm leading-7 text-white/50 sm:text-base">
             Powered by modern tools, frameworks and creative technologies.
           </p>
         </div>
 
         {/* Category tabs */}
-        <div className="mt-10 flex justify-start overflow-x-auto pb-3 sm:mt-12 sm:justify-center">
+        <div className="mt-10 sm:mt-12">
           <div
             role="tablist"
             aria-label="Technology categories"
-            className="flex w-max min-w-full gap-2 sm:min-w-0 sm:flex-wrap sm:justify-center"
+            className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:justify-center sm:gap-2"
           >
             {categories.map((category) => {
               const isActive = activeCategory === category.id
@@ -265,7 +249,7 @@ export default function Technologies() {
                     setActiveCategory(category.id)
                     setSelectedTechnology(null)
                   }}
-                  className={`shrink-0 rounded-full border px-5 py-3 font-display text-xs font-semibold transition-all duration-300 sm:text-sm ${
+                  className={`flex min-h-[48px] w-full items-center justify-center rounded-full border px-2 py-2 text-center font-display text-[10px] font-semibold leading-tight transition-all duration-300 sm:min-h-0 sm:w-auto sm:px-5 sm:py-3 sm:text-sm ${
                     isActive
                       ? 'border-[#45BEB3]/60 bg-[#45BEB3]/15 text-[#65D7C8] shadow-[0_0_24px_rgba(69,190,179,0.09)]'
                       : 'border-white/10 bg-white/[0.035] text-white/55 hover:border-[#45BEB3]/35 hover:bg-[#45BEB3]/[0.07] hover:text-white'
@@ -291,7 +275,7 @@ export default function Technologies() {
         {/* Technology cards */}
         <div
           key={currentCategory.id}
-          className="mx-auto mt-7 grid max-w-6xl grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
+          className="grid max-w-6xl grid-cols-2 gap-3 mx-auto mt-7 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
         >
           {currentCategory.technologies.map((technology, index) => (
             <button
@@ -309,7 +293,7 @@ export default function Technologies() {
                 className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#45BEB3]/0 blur-3xl transition-colors duration-500 group-hover:bg-[#45BEB3]/15"
               />
 
-              <div className="relative z-10 flex min-w-0 flex-col items-start gap-3">
+              <div className="relative z-10 flex flex-col items-start min-w-0 gap-3">
                 <TechnologyLogo technology={technology} />
 
                 <span className="truncate font-display text-xs font-semibold text-white/85 transition-colors duration-300 group-hover:text-[#65D7C8] sm:text-sm">
@@ -325,12 +309,12 @@ export default function Technologies() {
         </div>
 
         {/* Bottom label */}
-        <div className="mt-10 flex items-center justify-center gap-3">
-          <span className="h-px w-10 bg-white/15" />
+        <div className="flex items-center justify-center gap-3 mt-10">
+          <span className="w-10 h-px bg-white/15" />
           <span className="font-display text-[10px] font-semibold uppercase tracking-[0.25em] text-white/30">
             Built with the right tools
           </span>
-          <span className="h-px w-10 bg-white/15" />
+          <span className="w-10 h-px bg-white/15" />
         </div>
       </div>
 
