@@ -138,9 +138,9 @@ function MetallicShapes() {
     () =>
       Array.from({ length: SHAPE_COUNT }, (_, index) =>
         new THREE.MeshPhysicalMaterial({
-          color: index === 3 ? '#d5e5e1' : '#cbd1d2',
+          color: index === 4 ? '#d5e5e1' : '#cbd1d2',
           metalness: 0.94,
-          roughness: index === 3 ? 0.22 : 0.16,
+          roughness: index === 4 ? 0.22 : 0.16,
           clearcoat: 1,
           clearcoatRoughness: 0.08,
           envMapIntensity: 1.7,
@@ -251,13 +251,19 @@ function MetallicShapes() {
 
   return (
     <>
+      {/* bT logo (first shape) */}
       <group
         ref={(node) => {
           groupsRef.current[0] = node
         }}
       >
         <mesh
-          geometry={geometries.ring}
+          geometry={geometries.logoTeal}
+          material={materials[0]}
+          onClick={handleShapeClick}
+        />
+        <mesh
+          geometry={geometries.logoDark}
           material={materials[0]}
           onClick={handleShapeClick}
         />
@@ -269,7 +275,7 @@ function MetallicShapes() {
         }}
       >
         <mesh
-          geometry={geometries.cube}
+          geometry={geometries.ring}
           material={materials[1]}
           onClick={handleShapeClick}
         />
@@ -279,20 +285,10 @@ function MetallicShapes() {
         ref={(node) => {
           groupsRef.current[2] = node
         }}
-        rotation={[0.2, 0, 0.3]}
       >
         <mesh
-          geometry={geometries.smallRing}
+          geometry={geometries.cube}
           material={materials[2]}
-          position={[-0.43, 0, 0]}
-          onClick={handleShapeClick}
-        />
-
-        <mesh
-          geometry={geometries.smallRing}
-          material={materials[2]}
-          position={[0.43, 0, 0]}
-          rotation={[0.5, 0.85, 0.6]}
           onClick={handleShapeClick}
         />
       </group>
@@ -301,27 +297,31 @@ function MetallicShapes() {
         ref={(node) => {
           groupsRef.current[3] = node
         }}
+        rotation={[0.2, 0, 0.3]}
       >
         <mesh
-          geometry={geometries.abstract}
+          geometry={geometries.smallRing}
           material={materials[3]}
+          position={[-0.43, 0, 0]}
+          onClick={handleShapeClick}
+        />
+
+        <mesh
+          geometry={geometries.smallRing}
+          material={materials[3]}
+          position={[0.43, 0, 0]}
+          rotation={[0.5, 0.85, 0.6]}
           onClick={handleShapeClick}
         />
       </group>
 
-      {/* bT logo */}
       <group
         ref={(node) => {
           groupsRef.current[4] = node
         }}
       >
         <mesh
-          geometry={geometries.logoTeal}
-          material={materials[4]}
-          onClick={handleShapeClick}
-        />
-        <mesh
-          geometry={geometries.logoDark}
+          geometry={geometries.abstract}
           material={materials[4]}
           onClick={handleShapeClick}
         />
