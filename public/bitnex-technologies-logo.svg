@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="220" viewBox="0 0 920 220" fill="none">
+  <title>Bitnex Technologies</title>
+  <desc>Premium geometric emerald monogram and Bitnex Technologies wordmark.</desc>
+  <defs>
+    <linearGradient id="markGradient" x1="28" y1="20" x2="188" y2="194" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#B8FFE3"/>
+      <stop offset="0.38" stop-color="#54E0AD"/>
+      <stop offset="1" stop-color="#087A58"/>
+    </linearGradient>
+    <linearGradient id="wordGradient" x1="258" y1="42" x2="760" y2="158" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#D7E8E0"/>
+    </linearGradient>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Geometric B monogram -->
+  <g transform="translate(12 10)">
+    <path d="M100 7L184 55V151L100 199L16 151V55L100 7Z" stroke="url(#markGradient)" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M69 55V151M69 57H111C139 57 143 91 116 101H69M69 101H119C151 101 151 149 117 149H69" stroke="url(#markGradient)" stroke-width="12" stroke-linecap="square" stroke-linejoin="round"/>
+    <path d="M151 39L169 50V156L151 167" stroke="#73E9BB" stroke-width="3" stroke-linecap="round" opacity=".72"/>
+    <circle cx="100" cy="7" r="4" fill="#C2FFE8"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="245" y="119" fill="url(#wordGradient)" font-family="Arial, Helvetica, sans-serif" font-size="91" font-weight="700" letter-spacing="8">BITNEX</text>
+  <path d="M251 145H702" stroke="#45C997" stroke-width="2" opacity=".8"/>
+  <text x="253" y="181" fill="#70DDB2" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="500" letter-spacing="11">TECHNOLOGIES</text>
+</svg>
