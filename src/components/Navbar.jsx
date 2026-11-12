@@ -25,7 +25,8 @@ export default function Navbar() {
   const { pathname } = useLocation()
   const navRef = useRef(null)
 
-  const isHome = pathname === '/'
+  // const isHome = pathname === '/'
+  const isHome = true
 
   const groupedServices = useMemo(() => {
     const visibleServices = services.filter(

@@ -79,10 +79,10 @@ function AboutHero() {
 
 export default function About() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#000000]">
+    <main className="min-h-screen  bg-[#000000]">
       <CursorFollower enabled={true} />
 
-      <Navbar />
+      <Navbar  />
       <AboutHero />
       <WhyChooseBitnex />
       <WhatDrivesBitnex />
