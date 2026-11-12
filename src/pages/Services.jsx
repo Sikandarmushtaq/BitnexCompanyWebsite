@@ -1,115 +1,177 @@
 
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { gsap } from 'gsap'
+import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import PageHero from '../components/PageHero.jsx'
+
+import Navbar from '../components/Navbar.jsx'
+import Streaks from '../components/Streaks.jsx'
+import CursorFollower from '../components/CursorFollower.jsx'
 import Icon from '../components/Icon.jsx'
 import CTA from '../components/CTA.jsx'
-import { services, process } from '../data/content.js'
+import { services } from '../data/content.js'
 
 gsap.registerPlugin(ScrollTrigger)
+
+const HERO_STREAK_COLORS = ['#ffffff', '#45BEB3']
 
 const categoryOrder = [
   'Development & Technology',
   'Digital Marketing & Growth',
-  'Creative & Visual Design',
+  'Creative & Visual Design'
 ]
+
+function ServicesHero() {
+  const contentRef = useRef(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        contentRef.current.children,
+        { y: 24, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          stagger: 0.15,
+          ease: 'power3.out'
+        }
+      )
+    }, contentRef)
+
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#000000] px-5 py-12 sm:px-8">
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <Streaks
+          count={145}
+          speed={14}
+          length={155}
+          colors={HERO_STREAK_COLORS}
+          opacity={0.9}
+          glow={17}
+          thickness={1.3}
+          direction="right"
+          interactive={true}
+          pointerGlow={true}
+          repelRadius={160}
+          repelStrength={35}
+        />
+      </div>
+
+      <div className="pointer-events-none absolute inset-0 z-[2] bg-black/20" />
+
+      <div
+        ref={contentRef}
+        className="relative z-10 mx-auto flex max-w-6xl -translate-y-8 flex-col items-center text-center sm:-translate-y-10 md:-translate-y-12"
+      >
+        <span className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#45BEB3] sm:mb-4 sm:text-sm">
+          What We Do
+        </span>
+
+        <h1 className="text-balance text-[clamp(3.5rem,10vw,8.5rem)] font-bold leading-[0.95] tracking-[-0.055em] text-white">
+          Our <span className="text-[#45BEB3]">Services</span>
+        </h1>
+
+        <p className="mt-5 max-w-4xl text-sm leading-7 text-white/65 sm:mt-6 sm:text-base sm:leading-8 md:text-xl">
+          We combine technology, strategy and creative thinking to build digital
+          solutions that help businesses operate smarter, connect with their
+          audiences and grow with confidence.
+        </p>
+      </div>
+    </section>
+  )
+}
 
 export default function Services() {
   const pageRef = useRef(null)
 
-  // Reveal service cards as they enter the viewport.
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.service-card',
-        {
-          opacity: 0,
-          y: 35,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.services-grid',
-            start: 'top 82%',
-            toggleActions: 'play none none none',
-          },
-        }
-      )
+    const page = pageRef.current
 
-      gsap.fromTo(
-        '.process-step',
-        {
-          opacity: 0,
-          y: 25,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          stagger: 0.15,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.process-grid',
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
+    if (!page) return
+
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray('.service-card')
+
+      gsap.set(cards, {
+        autoAlpha: 0,
+        y: 28
+      })
+
+      ScrollTrigger.batch(cards, {
+        start: 'top 88%',
+        once: true,
+        onEnter: (batch) => {
+          gsap.to(batch, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power3.out',
+            overwrite: true
+          })
         }
-      )
-    }, pageRef)
+      })
+    }, page)
 
     return () => ctx.revert()
   }, [])
 
   const categories = categoryOrder.map((category) => ({
     title: category,
-    services: services.filter((service) => service.category === category),
+    services: services.filter(
+      (service) => service.category === category
+    )
   }))
 
   return (
-    <div ref={pageRef}>
-      <PageHero
-        title="Our Services"
-        text="We combine technology, strategy and creative thinking to build digital solutions that help businesses operate smarter, connect with their audiences and grow with confidence."
-      />
+    <main
+      ref={pageRef}
+      className="min-h-screen overflow-hidden bg-[#000000]"
+    >
+      <CursorFollower enabled={true} />
 
-      <section className="relative overflow-hidden bg-[#07130F] py-20 text-white sm:py-28">
-        <div className="pointer-events-none absolute -right-40 top-0 h-96 w-96 rounded-full bg-teal/10 blur-[130px]" />
-        <div className="pointer-events-none absolute -bottom-40 left-0 h-96 w-96 rounded-full bg-teal/10 blur-[130px]" />
+      <Navbar />
 
-        <div className="container-x relative">
-          <div className="mb-14 max-w-3xl">
-            <span className="font-display text-xs font-bold uppercase tracking-[0.28em] text-teal">
+      <ServicesHero />
+
+      <section className="relative overflow-hidden bg-[#000000] px-4 py-12 text-white sm:px-6 sm:py-16 xl:px-10">
+        <div className="pointer-events-none absolute -left-40 top-1/3 h-[450px] w-[450px] rounded-full bg-[#45BEB3]/[0.045] blur-[150px]" />
+
+        <div className="relative mx-auto w-full max-w-[1480px]">
+
+          <div className="mb-9 sm:mb-12">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#45BEB3] sm:text-xs">
               What We Deliver
             </span>
 
-            <h2 className="mt-5 text-3xl font-bold leading-tight text-white sm:text-5xl">
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
               Expertise that moves
-              <span className="block text-teal">your business forward.</span>
+              <span className="block text-[#45BEB3]">
+                your business forward.
+              </span>
             </h2>
 
-            <p className="mt-5 max-w-2xl text-base leading-8 text-slate-400">
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55 sm:text-base sm:leading-8">
               From digital foundations to advanced technology and creative
               experiences, our services are designed around your business
               objectives.
             </p>
           </div>
 
-          <div className="sticky top-20 z-30 mb-16 -mx-5 border-y border-white/10 bg-[#07130F]/90 px-5 py-4 backdrop-blur-xl sm:mx-0 sm:rounded-2xl sm:border sm:px-5">
+          <div className="sticky top-20 z-30 mb-12 bg-black/90 py-3 backdrop-blur-xl sm:mb-14">
             <nav
               aria-label="Service categories"
-              className="flex gap-3 overflow-x-auto"
+              className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-3"
             >
               {categories.map((category, index) => (
                 <a
                   key={category.title}
                   href={`#category-${index}`}
-                  className="shrink-0 rounded-full border border-white/10 px-4 py-2.5 text-xs font-semibold text-slate-300 transition-all duration-300 hover:border-teal/50 hover:bg-teal/10 hover:text-teal sm:text-sm"
+                  className="flex min-h-[62px] min-w-0 items-center justify-center rounded-xl bg-[#080C0B] px-2 py-2.5 text-center text-[10px] font-semibold leading-tight text-white/60 transition-all duration-300 hover:bg-[#45BEB3]/10 hover:text-[#45BEB3] sm:min-h-0 sm:w-auto sm:rounded-full sm:px-5 sm:py-3 sm:text-sm"
                 >
                   {category.title}
                 </a>
@@ -117,16 +179,16 @@ export default function Services() {
             </nav>
           </div>
 
-          <div className="space-y-24">
+          <div className="space-y-20 sm:space-y-24">
             {categories.map((category, categoryIndex) => (
               <section
                 key={category.title}
                 id={`category-${categoryIndex}`}
-                className="scroll-mt-40"
+                className="scroll-mt-36"
               >
-                <div className="mb-9 flex flex-wrap items-end justify-between gap-4">
+                <div className="mb-7 flex flex-wrap items-end justify-between gap-4 sm:mb-9">
                   <div>
-                    <span className="font-display text-xs font-bold uppercase tracking-[0.24em] text-teal">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#45BEB3] sm:text-xs">
                       0{categoryIndex + 1} / Service Division
                     </span>
 
@@ -135,100 +197,74 @@ export default function Services() {
                     </h3>
                   </div>
 
-                  <span className="text-sm text-slate-500">
+                  <span className="text-sm text-white/40">
                     {String(category.services.length).padStart(2, '0')} Services
                   </span>
                 </div>
 
-                <div className="services-grid grid gap-5 lg:grid-cols-2">
+                <div className="services-grid grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 xl:gap-6">
                   {category.services.map((service, index) => (
                     <article
                       key={service.slug}
                       id={service.slug}
-                      className="service-card group relative scroll-mt-36 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.035] p-6 transition-all duration-500 hover:-translate-y-1 hover:border-teal/40 hover:bg-white/[0.06] sm:p-8"
+                      className="service-card group relative flex min-h-[390px] scroll-mt-36 transform-gpu flex-col overflow-hidden rounded-2xl border border-white/[0.09] bg-[#080C0B] p-6 transition-all duration-500 ease-out hover:-translate-y-1 hover:-rotate-1 hover:border-[#45BEB3]/45 hover:shadow-[0_18px_50px_rgba(69,190,179,0.10)] sm:p-7"
                     >
-                      <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-teal/[0.06] blur-3xl transition-all duration-500 group-hover:bg-teal/[0.13]" />
+                      <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-[#45BEB3]/[0.04] blur-3xl transition-all duration-500 group-hover:bg-[#45BEB3]/[0.12]" />
 
-                      <div className="relative">
-                        <div className="flex items-start justify-between gap-4">
-                          <span className="grid h-14 w-14 place-items-center rounded-2xl border border-teal/20 bg-teal/10 text-teal transition-all duration-300 group-hover:border-teal/40 group-hover:bg-teal group-hover:text-[#07130F]">
+                      <div className="relative z-10 flex flex-1 flex-col">
+                        <div className="flex items-center justify-between">
+                          <span className="grid h-11 w-11 place-items-center rounded-xl border border-[#45BEB3]/20 bg-[#45BEB3]/[0.08] text-[#45BEB3] transition-all duration-300 group-hover:border-[#45BEB3]/40 group-hover:bg-[#45BEB3]/15">
                             <Icon
                               name={service.icon}
-                              className="h-7 w-7"
+                              className="h-5 w-5"
                             />
                           </span>
 
-                          <span className="font-display text-sm font-semibold text-slate-600">
-                            {String(index + 1).padStart(2, '0')}
+                          <span className="text-sm font-medium tabular-nums text-white/25 transition-colors duration-300 group-hover:text-[#45BEB3]">
+                            0{index + 1}
                           </span>
                         </div>
 
-                        <h4 className="mt-7 text-xl font-bold text-white transition-colors duration-300 group-hover:text-teal sm:text-2xl">
+                        <h4 className="mt-5 text-lg font-semibold leading-snug tracking-tight text-white transition-colors duration-300 group-hover:text-[#45BEB3] sm:text-xl">
                           {service.title}
                         </h4>
 
-                        <p className="mt-3 min-h-[72px] max-w-xl text-sm leading-7 text-slate-400">
+                        <p className="mt-3 text-xs leading-6 text-white/55 sm:text-sm">
                           {service.desc}
                         </p>
 
-                        <div className="mt-7">
-                          <h5 className="text-xs font-bold uppercase tracking-[0.16em] text-slate-300">
-                            What we deliver
+                        <div className="mt-6">
+                          <h5 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/75 sm:text-xs">
+                            What We Deliver
                           </h5>
 
-                          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                          <ul className="mt-3 grid grid-cols-1 gap-x-3 gap-y-2 sm:grid-cols-2">
                             {service.includes.map((item) => (
                               <li
                                 key={item}
-                                className="flex items-start gap-2.5 text-sm leading-6 text-slate-400"
+                                className="flex items-start gap-2 text-xs leading-5 text-white/50"
                               >
-                                <svg
-                                  viewBox="0 0 20 20"
-                                  className="mt-1 h-4 w-4 shrink-0 text-teal"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
+                                <span
                                   aria-hidden="true"
+                                  className="mt-0.5 shrink-0 text-sm font-bold text-[#45BEB3]"
                                 >
-                                  <path d="m4 10.5 4 4 8-9" />
-                                </svg>
-                                {item}
+                                  ✓
+                                </span>
+
+                                <span>{item}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
 
-                        <div className="mt-8 border-t border-white/10 pt-6">
-                          <h5 className="text-xs font-bold uppercase tracking-[0.16em] text-slate-300">
-                            Technologies & Tools
-                          </h5>
-
-                          <div className="mt-4 flex flex-wrap gap-2">
-                            {service.tech.map((technology) => (
-                              <span
-                                key={technology}
-                                className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-slate-400 transition-colors duration-300 hover:border-teal/30 hover:text-teal"
-                              >
-                                {technology.trim()}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="mt-7 flex items-center justify-between border-t border-white/10 pt-6">
+                        <div className="mt-auto pt-6">
                           <Link
                             to={`/contact?service=${encodeURIComponent(service.title)}`}
-                            className="inline-flex items-center gap-2 font-display text-sm font-semibold text-teal transition-all duration-300 hover:gap-3"
+                            className="inline-flex items-center gap-2 text-sm font-semibold text-[#45BEB3] transition-all duration-300 hover:gap-3"
                           >
                             Discuss your project
                             <span aria-hidden="true">→</span>
                           </Link>
-
-                          <span className="text-xs text-slate-600">
-                            Bitnex Technologies
-                          </span>
                         </div>
                       </div>
                     </article>
@@ -237,53 +273,11 @@ export default function Services() {
               </section>
             ))}
           </div>
+
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-navy py-20 sm:py-28">
-        <div className="container-x">
-          <div className="max-w-2xl">
-            <span className="font-display text-xs font-bold uppercase tracking-[0.25em] text-teal">
-              Our Approach
-            </span>
-
-            <h2 className="mt-5 text-3xl font-bold text-white sm:text-5xl">
-              A clear process.
-              <span className="block text-teal">A stronger outcome.</span>
-            </h2>
-
-            <p className="mt-5 leading-8 text-slate-400">
-              Every successful project starts with a clear understanding of
-              the goal. Our structured process keeps each stage focused,
-              collaborative and purposeful.
-            </p>
-          </div>
-
-          <ol className="process-grid mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
-            {process.map((step, index) => (
-              <li
-                key={step.title}
-                className="process-step border-t border-teal/50 pt-6"
-              >
-                <span className="font-display text-sm font-bold text-teal">
-                  STEP 0{index + 1}
-                </span>
-
-                <h3 className="mt-5 text-xl font-bold text-white">
-                  {step.title}
-                </h3>
-
-                <p className="mt-2 text-sm leading-7 text-slate-400">
-                  {step.sub}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <div className="pt-20 sm:pt-24" />
-      <CTA />
-    </div>
+      {/* <CTA /> */}
+    </main>
   )
 }

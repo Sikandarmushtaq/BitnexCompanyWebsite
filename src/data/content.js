@@ -10,12 +10,11 @@ export const contact = {
 }
 
 export const services = [
-  // Development & Technology
   {
     slug: 'web-development',
     category: 'Development & Technology',
     title: 'Website Development',
-    desc: 'We engineer high-performance websites that combine refined design, seamless functionality and scalable technology to strengthen your digital presence.',
+    desc: 'We design and engineer sophisticated digital platforms that strengthen brand positioning, deliver exceptional user experiences, and create a powerful foundation for business growth. Every website is developed with performance, accessibility, scalability, and conversion in mind.',
     includes: [
       'Corporate and business websites',
       'Conversion-focused landing pages',
@@ -24,14 +23,13 @@ export const services = [
       'Performance and technical SEO',
       'Deployment and launch support',
     ],
-    tech: ['React', 'Next.js', 'WordPress', 'Shopify', 'Tailwind CSS'],
     icon: 'web',
   },
   {
     slug: 'software-development',
     category: 'Development & Technology',
     title: 'Software Development',
-    desc: 'We build tailored software solutions that simplify complex operations, connect business workflows and support long-term organizational growth.',
+    desc: 'We develop purpose-built software that transforms complex business requirements into streamlined, intelligent, and connected systems. Our engineering approach focuses on operational efficiency, system reliability, and adaptable architecture that supports evolving business demands.',
     includes: [
       'Custom business applications',
       'CRM and ERP solutions',
@@ -40,14 +38,13 @@ export const services = [
       'Database architecture',
       'Cloud deployment and maintenance',
     ],
-    tech: ['Node.js', 'Python', '.NET', 'PostgreSQL', 'AWS'],
     icon: 'code',
   },
   {
     slug: 'app-development',
     category: 'Development & Technology',
     title: 'Mobile Application Development',
-    desc: 'We create intuitive mobile applications with polished user experiences, reliable performance and the flexibility to grow with your audience.',
+    desc: 'We create high-quality mobile applications that bring your services closer to customers through intuitive interactions, refined interfaces, and dependable performance. From concept to deployment, every application is engineered for usability, functionality, and long-term scalability.',
     includes: [
       'iOS and Android applications',
       'Cross-platform app development',
@@ -56,14 +53,13 @@ export const services = [
       'Push notifications and authentication',
       'App Store and Play Store deployment',
     ],
-    tech: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase'],
     icon: 'app',
   },
   {
     slug: 'ai-automation',
     category: 'Development & Technology',
     title: 'AI & Automation Solutions',
-    desc: 'We integrate intelligent technologies and automated workflows to reduce repetitive work, improve decision-making and make business operations more efficient.',
+    desc: 'We integrate artificial intelligence and intelligent automation into business operations to eliminate repetitive processes, unlock valuable insights, and improve organizational efficiency. Our solutions connect emerging technologies with practical business applications to deliver measurable operational value.',
     includes: [
       'AI-powered business solutions',
       'Intelligent chatbots and assistants',
@@ -72,14 +68,13 @@ export const services = [
       'Automated data processing',
       'AI system integration and optimization',
     ],
-    tech: ['Python', 'OpenAI API', 'Node.js', 'LangChain', ' n8n'],
     icon: 'ai',
   },
   {
     slug: 'saas-development',
     category: 'Development & Technology',
     title: 'SaaS Product Development',
-    desc: 'We transform product ideas into scalable SaaS platforms, with secure architecture, intuitive interfaces and the infrastructure needed to support growing users.',
+    desc: 'We engineer scalable software-as-a-service platforms that turn product concepts into secure, market-ready digital products. From product architecture and subscription infrastructure to user management and cloud deployment, we build systems designed for sustainable growth.',
     includes: [
       'SaaS product architecture',
       'Subscription and billing systems',
@@ -88,14 +83,13 @@ export const services = [
       'Admin and analytics dashboards',
       'Cloud deployment and scalability',
     ],
-    tech: ['React', 'Node.js', 'MongoDB', 'PostgreSQL', 'AWS'],
     icon: 'saas',
   },
   {
     slug: 'interactive-3d-web',
     category: 'Development & Technology',
     title: 'Interactive & 3D Web Experiences',
-    desc: 'We create immersive digital experiences using interactive 3D elements, motion and modern web technologies to make brands more engaging and memorable.',
+    desc: 'We create immersive digital experiences that combine interactive environments, advanced 3D technology, and sophisticated motion design. By bringing products and ideas to life through the browser, we help brands deliver more engaging and memorable digital interactions.',
     includes: [
       'Interactive 3D website experiences',
       'Real-time 3D product visualizations',
@@ -104,32 +98,13 @@ export const services = [
       'Scroll-based visual experiences',
       'Performance-optimized 3D interfaces',
     ],
-    tech: ['Three.js', 'React Three Fiber', 'GSAP', 'WebGL', 'Blender'],
     icon: 'cube',
   },
-  // {
-  //   slug: 'fix-bug-error',
-  //   category: 'Development & Technology',
-  //   title: 'Technical Support & Bug Fixing',
-  //   desc: 'We diagnose and resolve technical issues with precision, restoring functionality, improving stability and keeping your digital products running reliably.',
-  //   includes: [
-  //     'Website and application bug fixes',
-  //     'Broken layouts and form repairs',
-  //     'Performance troubleshooting',
-  //     'Plugin and dependency conflict resolution',
-  //     'API and integration debugging',
-  //     'Ongoing technical maintenance',
-  //   ],
-  //   tech: ['React', 'Node.js', 'WordPress', 'PHP', 'JavaScript'],
-  //   icon: 'bug',
-  // },
-
-  // Digital Marketing & Growth
   {
     slug: 'seo',
     category: 'Digital Marketing & Growth',
     title: 'Search Engine Optimization',
-    desc: 'We strengthen your search visibility through technical improvements, strategic content and data-driven optimization that attracts relevant organic traffic.',
+    desc: 'We develop comprehensive search strategies that improve organic visibility, strengthen search performance, and connect businesses with the audiences that matter. Through technical optimization, strategic content, and continuous performance analysis, we build a sustainable foundation for long-term digital growth.',
     includes: [
       'Comprehensive SEO audits',
       'Keyword and competitor research',
@@ -138,14 +113,13 @@ export const services = [
       'Local SEO strategy',
       'Performance tracking and reporting',
     ],
-    tech: ['Google Search Console', 'Google Analytics', 'Ahrefs', 'SEMrush'],
     icon: 'seo',
   },
   {
     slug: 'smm',
     category: 'Digital Marketing & Growth',
     title: 'Social Media & Brand Growth',
-    desc: 'We build a consistent social presence through strategic content, audience engagement and platform-specific campaigns that strengthen brand recognition.',
+    desc: 'We develop strategic social media experiences that establish brand authority, strengthen audience relationships, and create consistent digital engagement. Every campaign combines purposeful content, platform-specific strategy, and performance insights to build a recognizable and credible brand presence.',
     includes: [
       'Social media strategy',
       'Content planning and calendars',
@@ -154,14 +128,13 @@ export const services = [
       'Community engagement',
       'Social performance reporting',
     ],
-    tech: ['Meta Business Suite', 'LinkedIn', 'TikTok', 'Canva'],
     icon: 'smm',
   },
   {
     slug: 'paid-advertising',
     category: 'Digital Marketing & Growth',
     title: 'Paid Advertising & Lead Generation',
-    desc: 'We plan and manage targeted advertising campaigns designed to reach qualified audiences, generate meaningful leads and improve marketing returns.',
+    desc: 'We plan and execute performance-driven advertising campaigns that connect businesses with qualified audiences and valuable conversion opportunities. Through strategic targeting, continuous optimization, and measurable campaign analysis, we focus on improving acquisition efficiency and marketing returns.',
     includes: [
       'Paid campaign strategy',
       'Audience and keyword targeting',
@@ -170,14 +143,13 @@ export const services = [
       'Conversion tracking setup',
       'Campaign optimization and reporting',
     ],
-    tech: ['Google Ads', 'Meta Ads', 'Google Analytics', 'Google Tag Manager'],
     icon: 'ads',
   },
   {
     slug: 'email-marketing',
     category: 'Digital Marketing & Growth',
     title: 'Email Marketing',
-    desc: 'We create focused email campaigns and automated customer journeys that nurture relationships, communicate value and support consistent business growth.',
+    desc: 'We design targeted email marketing strategies that turn audience relationships into lasting customer engagement. From personalized campaigns and automated communication journeys to performance optimization, we help businesses deliver relevant messages at every stage of the customer lifecycle.',
     includes: [
       'Email campaign strategy',
       'Professional email templates',
@@ -186,14 +158,13 @@ export const services = [
       'Newsletter management',
       'Campaign analytics and optimization',
     ],
-    tech: ['Mailchimp', 'Klaviyo', 'Brevo', 'HubSpot'],
     icon: 'mail',
   },
   {
     slug: 'landing-page-optimization',
     category: 'Digital Marketing & Growth',
     title: 'Landing Page Optimization',
-    desc: 'We refine landing page structure, messaging and user journeys to reduce friction, improve engagement and turn more visitors into qualified leads.',
+    desc: 'We transform underperforming landing pages into focused digital experiences built around user intent and conversion objectives. By refining messaging, interface structure, user journeys, and interaction patterns, we help businesses reduce friction and improve the effectiveness of their digital campaigns.',
     includes: [
       'Landing page audits',
       'Conversion-focused page design',
@@ -202,16 +173,13 @@ export const services = [
       'A/B testing strategy',
       'Conversion performance analysis',
     ],
-    tech: ['Google Analytics', 'Hotjar', 'Microsoft Clarity', 'Google Tag Manager'],
     icon: 'landing',
   },
-
-  // Creative & Visual Design
   {
     slug: 'graphic-designing',
     category: 'Creative & Visual Design',
     title: 'Graphic Design & Brand Identity',
-    desc: 'We develop distinctive visual identities and purposeful creative assets that communicate your brand values and create a consistent presence across platforms.',
+    desc: 'We create distinctive visual identities and cohesive brand systems that communicate a clear market position and establish lasting recognition. From foundational brand elements to comprehensive creative assets, every design decision is guided by consistency, purpose, and visual distinction.',
     includes: [
       'Logo and brand identity design',
       'Brand guidelines and visual systems',
@@ -220,14 +188,13 @@ export const services = [
       'Marketing and promotional materials',
       'Packaging and advertising design',
     ],
-    tech: ['Adobe Illustrator', 'Adobe Photoshop', 'Figma', 'Canva'],
     icon: 'design',
   },
   {
     slug: 'video-editing',
     category: 'Creative & Visual Design',
     title: 'Professional Video Editing',
-    desc: 'We turn raw footage into polished visual content through thoughtful storytelling, precise editing and platform-ready production that keeps audiences engaged.',
+    desc: 'We transform raw footage into compelling visual content through refined editing, intentional storytelling, and professional post-production. Every production is crafted to communicate the right message, maintain audience attention, and deliver a consistent visual standard across digital platforms.',
     includes: [
       'Promotional and brand videos',
       'Social media video editing',
@@ -236,14 +203,13 @@ export const services = [
       'Color correction and audio refinement',
       'Platform-specific video formatting',
     ],
-    tech: ['Adobe Premiere Pro', 'DaVinci Resolve', 'After Effects', 'CapCut'],
     icon: 'video',
   },
   {
     slug: 'motion-graphics',
     category: 'Creative & Visual Design',
     title: 'Motion Graphics & Animation',
-    desc: 'We bring ideas to life through purposeful motion design, animated visuals and engaging transitions that make complex messages easier to understand.',
+    desc: 'We combine visual storytelling, purposeful movement, and sophisticated animation to make ideas more expressive and engaging. From animated brand identities to complex motion sequences, we create visual content that strengthens communication and gives digital experiences a distinctive character.',
     includes: [
       '2D motion graphics',
       'Animated brand elements',
@@ -252,7 +218,6 @@ export const services = [
       'Promotional visual sequences',
       'Animated social media content',
     ],
-    tech: ['Adobe After Effects', 'Adobe Illustrator', 'Blender', 'Lottie'],
     icon: 'motion',
   },
 ]
