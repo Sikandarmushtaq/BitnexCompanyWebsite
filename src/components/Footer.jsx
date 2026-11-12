@@ -10,7 +10,7 @@ const company = [
   { to: '/blog', label: 'Blog' },
   { to: '/services', label: 'Our Services' },
   // { to: '/services#web-development', label: 'Landing Pages' },
-  { to: '/blog', label: 'Latest News' },
+  // { to: '/blog', label: 'Latest News' },
 ]
 
 const support = [

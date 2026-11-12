@@ -71,16 +71,20 @@ export default function Streaks({
   thickness = 1.2,
   direction = 'right',
   interactive = false,
+  pointerGlow = false,
   repelRadius = 150,
   repelStrength = 35,
   className = '',
   style = {},
 }) {
   const canvasRef = useRef(null)
+  const glowRef = useRef(null)
+
   const colorSignature = colors.join('|')
 
   useEffect(() => {
     const canvas = canvasRef.current
+    const glowElement = glowRef.current
 
     if (!canvas) return
 
@@ -128,7 +132,6 @@ export default function Streaks({
 
     const reducedMotion = motionPreference.matches
 
-    // Create all particles without updating React state.
     function createStreaks() {
       streaks = Array.from({ length: count }, () => {
         const color = palette[Math.floor(Math.random() * palette.length)]
@@ -145,7 +148,6 @@ export default function Streaks({
       })
     }
 
-    // Resize the canvas without changing its displayed dimensions.
     function resizeCanvas() {
       const rect = canvas.getBoundingClientRect()
 
@@ -164,8 +166,9 @@ export default function Streaks({
       createStreaks()
     }
 
-    // Track cursor movement only for interactive Hero streaks.
     function handlePointerMove(event) {
+      if (event.pointerType === 'touch') return
+
       const rect = canvas.getBoundingClientRect()
 
       pointer.x = event.clientX - rect.left
@@ -176,9 +179,32 @@ export default function Streaks({
         pointer.x <= width &&
         pointer.y >= 0 &&
         pointer.y <= height
+
+      if (pointerGlow && glowElement) {
+        glowElement.style.setProperty(
+          '--streak-glow-x',
+          `${pointer.x}px`
+        )
+
+        glowElement.style.setProperty(
+          '--streak-glow-y',
+          `${pointer.y}px`
+        )
+
+        glowElement.style.opacity = pointer.active ? '1' : '0'
+      }
     }
 
-    // Move particles and respawn them outside the visible canvas.
+    function handlePointerLeave(event) {
+      if (event.relatedTarget) return
+
+      pointer.active = false
+
+      if (glowElement) {
+        glowElement.style.opacity = '0'
+      }
+    }
+
     function moveStreak(streak, delta) {
       if (reducedMotion) return
 
@@ -211,7 +237,6 @@ export default function Streaks({
       }
     }
 
-    // Draw each pre-rendered streak and apply optional cursor repulsion.
     function drawStreak(streak, delta) {
       moveStreak(streak, delta)
 
@@ -255,7 +280,6 @@ export default function Streaks({
       context.restore()
     }
 
-    // Render the animation independently from React.
     function animate(time) {
       if (!running) return
 
@@ -274,7 +298,6 @@ export default function Streaks({
       animationId = requestAnimationFrame(animate)
     }
 
-    // Start animation only when the tab is visible.
     function startAnimation() {
       if (running || document.hidden) return
 
@@ -290,7 +313,6 @@ export default function Streaks({
       animationId = requestAnimationFrame(animate)
     }
 
-    // Pause rendering when the browser tab is hidden.
     function stopAnimation() {
       running = false
       cancelAnimationFrame(animationId)
@@ -310,10 +332,12 @@ export default function Streaks({
 
     resizeObserver.observe(canvas)
 
-    if (interactive) {
+    if (interactive || pointerGlow) {
       window.addEventListener('pointermove', handlePointerMove, {
         passive: true,
       })
+
+      window.addEventListener('pointerout', handlePointerLeave)
     }
 
     document.addEventListener('visibilitychange', handleVisibilityChange)
@@ -325,8 +349,9 @@ export default function Streaks({
       stopAnimation()
       resizeObserver.disconnect()
 
-      if (interactive) {
+      if (interactive || pointerGlow) {
         window.removeEventListener('pointermove', handlePointerMove)
+        window.removeEventListener('pointerout', handlePointerLeave)
       }
 
       document.removeEventListener(
@@ -349,24 +374,42 @@ export default function Streaks({
     thickness,
     direction,
     interactive,
+    pointerGlow,
     repelRadius,
     repelStrength,
   ])
 
   return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden="true"
-      className={className}
-      style={{
-        position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        pointerEvents: 'none',
-        zIndex: 0,
-        ...style,
-      }}
-    />
+    <>
+      <canvas
+        ref={canvasRef}
+        aria-hidden="true"
+        className={className}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          pointerEvents: 'none',
+          zIndex: 0,
+          ...style,
+        }}
+      />
+
+      {pointerGlow && (
+        <div
+          ref={glowRef}
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            zIndex: 1,
+            opacity: 0,
+            background:
+              'radial-gradient(460px circle at var(--streak-glow-x, 50%) var(--streak-glow-y, 50%), rgba(69,190,179,0.2), transparent 72%)',
+            transition: 'opacity 250ms ease',
+          }}
+        />
+      )}
+    </>
   )
 }

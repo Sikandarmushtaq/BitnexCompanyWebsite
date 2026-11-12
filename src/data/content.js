@@ -107,22 +107,22 @@ export const services = [
     tech: ['Three.js', 'React Three Fiber', 'GSAP', 'WebGL', 'Blender'],
     icon: 'cube',
   },
-  {
-    slug: 'fix-bug-error',
-    category: 'Development & Technology',
-    title: 'Technical Support & Bug Fixing',
-    desc: 'We diagnose and resolve technical issues with precision, restoring functionality, improving stability and keeping your digital products running reliably.',
-    includes: [
-      'Website and application bug fixes',
-      'Broken layouts and form repairs',
-      'Performance troubleshooting',
-      'Plugin and dependency conflict resolution',
-      'API and integration debugging',
-      'Ongoing technical maintenance',
-    ],
-    tech: ['React', 'Node.js', 'WordPress', 'PHP', 'JavaScript'],
-    icon: 'bug',
-  },
+  // {
+  //   slug: 'fix-bug-error',
+  //   category: 'Development & Technology',
+  //   title: 'Technical Support & Bug Fixing',
+  //   desc: 'We diagnose and resolve technical issues with precision, restoring functionality, improving stability and keeping your digital products running reliably.',
+  //   includes: [
+  //     'Website and application bug fixes',
+  //     'Broken layouts and form repairs',
+  //     'Performance troubleshooting',
+  //     'Plugin and dependency conflict resolution',
+  //     'API and integration debugging',
+  //     'Ongoing technical maintenance',
+  //   ],
+  //   tech: ['React', 'Node.js', 'WordPress', 'PHP', 'JavaScript'],
+  //   icon: 'bug',
+  // },
 
   // Digital Marketing & Growth
   {

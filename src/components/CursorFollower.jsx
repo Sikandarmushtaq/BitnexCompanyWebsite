@@ -1,10 +1,12 @@
 
 import { useEffect, useRef } from 'react'
 
-export default function CursorFollower() {
+export default function CursorFollower({ enabled = true }) {
   const cursorRef = useRef(null)
 
   useEffect(() => {
+    if (!enabled) return
+
     const cursor = cursorRef.current
 
     if (!cursor) return
@@ -20,7 +22,6 @@ export default function CursorFollower() {
     let animationId = 0
     let visible = false
 
-    // Smoothly follow the real pointer without React re-renders.
     function animate() {
       currentX += (targetX - currentX) * 0.2
       currentY += (targetY - currentY) * 0.2
@@ -38,7 +39,6 @@ export default function CursorFollower() {
       }
     }
 
-    // Position the follower slightly behind the actual mouse pointer.
     function handlePointerMove(event) {
       if (event.pointerType === 'touch') return
 
@@ -48,6 +48,7 @@ export default function CursorFollower() {
       if (!visible) {
         currentX = targetX
         currentY = targetY
+
         cursor.style.transform =
           `translate3d(${currentX}px, ${currentY}px, 0)`
 
@@ -60,7 +61,6 @@ export default function CursorFollower() {
       }
     }
 
-    // Hide the follower when the pointer leaves the browser window.
     function handlePointerOut(event) {
       if (!event.relatedTarget) {
         visible = false
@@ -90,7 +90,9 @@ export default function CursorFollower() {
       document.removeEventListener('pointerout', handlePointerOut)
       window.removeEventListener('blur', handleWindowBlur)
     }
-  }, [])
+  }, [enabled])
+
+  if (!enabled) return null
 
   return (
     <div

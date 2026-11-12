@@ -275,7 +275,7 @@ export default function Technologies() {
         {/* Technology cards */}
         <div
           key={currentCategory.id}
-          className="grid max-w-6xl grid-cols-2 gap-3 mx-auto mt-7 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
+className="grid max-w-6xl grid-cols-4 gap-2 mx-auto mt-7 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
         >
           {currentCategory.technologies.map((technology, index) => (
             <button

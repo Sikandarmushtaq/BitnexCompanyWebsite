@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger)
 const journalItems = [
   {
     image: blogHero,
-    category: 'THE BITNEX JOURNAL',
+    category: 'THE BITNEX Blogs',
     title: 'Ideas That Shape Tomorrow.',
     description:
       'A closer look at the ideas, technology and creativity shaping the digital world. Explore perspectives that inspire better ways to build and grow.',
@@ -130,7 +130,7 @@ export default function BlogShowcase() {
     <section id="blogs" className="blog-showcase">
       <div className="container-x blog-showcase-container">
         <header className="blog-showcase-heading">
-          <span>THE BITNEX JOURNAL</span>
+          <span>THE BITNEX Blogs</span>
           <h2>Ideas That Shape Tomorrow.</h2>
           <p>Perspectives on technology, innovation and creative thinking.</p>
         </header>
