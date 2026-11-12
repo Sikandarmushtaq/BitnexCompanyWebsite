@@ -45,7 +45,7 @@ function AboutHero() {
           opacity={0.9}
           glow={17}
           thickness={1.3}
-          direction="left"
+          direction="right"
           interactive={true}
           pointerGlow={true}
           repelRadius={160}
