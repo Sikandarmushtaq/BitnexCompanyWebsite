@@ -290,29 +290,43 @@ export const skills = [
   { label: 'Experience', value: 92 },
 ]
 
-export const posts = [
-  {
-    slug: 'how-to-use-the-famous-ai-chat-bot',
-    title: 'How to use the famous AI chat bot',
-    date: 'Mar 12, 2024',
-    excerpt: 'Chat GPT is a well-known AI chat bot that helps in customer interaction, participates in conversations and solves queries effectively. Using this robot is easy - register on our website to start your first project!',
-  },
-  {
-    slug: 'how-is-artificial-intelligence-shaping-up-in-2024',
-    title: 'How is Artificial Intelligence shaping up in 2024',
-    date: 'Feb 28, 2024',
-    excerpt: 'Artificial intelligence is the ability of a digital computer or computer-controlled robot to perform tasks normally associated with intelligent beings. It is also described as a man-made intelligent entity that can perform tasks intelligently without specific instructions and has the ability to think and act logically.',
-  },
-  {
-    slug: 'what-is-a-landing-page',
-    title: 'What Is a Landing Page',
-    date: 'Feb 10, 2024',
-    excerpt: 'A landing page is a web page designed to persuade users to take a specific action, such as subscribing to a newsletter, purchasing a product, or responding to an event. Users usually reach landing pages through paid advertising campaigns, but they can also find your landing page through your homepage, social media, organic search results, and email campaigns.',
-  },
-  {
-    slug: 'the-role-of-digital-marketing',
-    title: "The Role of Digital Marketing in Today's Business Landscape",
-    date: 'Jan 22, 2024',
-    excerpt: "In today's business world, digital marketing plays a key role as it helps businesses to effectively reach their target audience on various online platforms. Using digital technologies such as the Internet, social media, search engines, email and mobile applications, businesses can connect with current and potential customers. Digital marketing strategies aim to improve brand visibility, increase website traffic, generate leads and ultimately increase sales. The use of data and analytics allows businesses to tailor their messages to specific demographics, improving conversion rates and return on investment (ROI).",
-  },
-]
+
+// export const posts = [
+//   {
+//     slug: 'how-to-use-the-famous-ai-chat-bot',
+//     title: 'Using AI Assistants to Improve Business Workflows',
+//     date: 'Mar 12, 2024',
+//     category: 'AI & Automation',
+//     imageKey: 'ai',
+//     excerpt:
+//       'AI assistants are changing how businesses access information, communicate with customers and manage everyday tasks. Explore practical ways to use intelligent tools, improve productivity and make digital workflows more efficient.',
+//   },
+//   {
+//     slug: 'how-is-artificial-intelligence-shaping-up-in-2024',
+//     title: 'How Artificial Intelligence Is Reshaping Business Operations',
+//     date: 'Feb 28, 2024',
+//     category: 'AI & Automation',
+//     imageKey: 'app',
+//     excerpt:
+//       'Artificial intelligence is extending beyond experimentation into real business applications. Discover how intelligent systems support automation, data analysis, customer experiences and more informed business decisions.',
+//   },
+//   {
+//     slug: 'what-is-a-landing-page',
+//     title: 'What Makes a Landing Page Effective?',
+//     date: 'Feb 10, 2024',
+//     category: 'Web Development',
+//     imageKey: 'web',
+//     excerpt:
+//       'An effective landing page combines focused messaging, intuitive design and a clear user journey. Learn how page structure, performance, mobile usability and conversion-focused experiences influence the results of a digital campaign.',
+//   },
+//   {
+//     slug: 'the-role-of-digital-marketing',
+//     title: 'Building Sustainable Growth Through Digital Marketing',
+//     date: 'Jan 22, 2024',
+//     category: 'Digital Marketing',
+//     imageKey: 'design',
+//     excerpt:
+//       'Digital marketing gives businesses a structured way to reach relevant audiences, strengthen brand recognition and develop meaningful customer relationships. Explore how content, search visibility, social platforms and performance insights work together.',
+//   },
+// ]
+

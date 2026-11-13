@@ -400,7 +400,7 @@ export default function Streaks({
         <div
           ref={glowRef}
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0"
+          className="absolute inset-0 pointer-events-none"
           style={{
             zIndex: 1,
             opacity: 0,

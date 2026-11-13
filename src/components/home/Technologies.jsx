@@ -18,11 +18,11 @@ const categories = [
       { name: 'Tailwind CSS', icon: 'tailwindcss', color: '06B6D4', desc: 'A utility-first CSS framework for custom responsive interfaces.' },
       { name: 'HTML5', icon: 'html5', color: 'E34F26', desc: 'The standard markup language for structuring web content.' },
       { name: 'CSS3', icon: 'css3', color: '1572B6', desc: 'The styling language behind modern web interfaces.' },
-      { name: 'Vite', icon: 'vite', color: '646CFF', desc: 'A fast development and build tool for modern frontend projects.' },
+      // { name: 'Vite', icon: 'vite', color: '646CFF', desc: 'A fast development and build tool for modern frontend projects.' },
       { name: 'Redux', icon: 'redux', color: '764ABC', desc: 'Predictable state management for JavaScript applications.' },
       { name: 'Prisma', icon: 'prisma', color: 'FFFFFF', desc: 'A modern database toolkit and ORM for application development.' },
-      { name: 'Git', icon: 'git', color: 'F05032', desc: 'Version control for managing and tracking code changes.' },
-      { name: 'GitHub', icon: 'github', color: 'FFFFFF', desc: 'A platform for code collaboration and software development.' },
+      // { name: 'Git', icon: 'git', color: 'F05032', desc: 'Version control for managing and tracking code changes.' },
+      // { name: 'GitHub', icon: 'github', color: 'FFFFFF', desc: 'A platform for code collaboration and software development.' },
     ],
   },
   {
@@ -95,7 +95,7 @@ const categories = [
       { name: 'Python', icon: 'python', color: '3776AB', desc: 'A general-purpose programming language for software and automation.' },
       { name: 'Go', icon: 'go', color: '00ADD8', desc: 'A compiled language designed for efficient software and services.' },
       { name: 'Rust', icon: 'rust', color: 'FFFFFF', desc: 'A systems programming language focused on performance and safety.' },
-      { name: 'VS Code', icon: 'visualstudiocode', color: '007ACC', desc: 'A code editor for software development and debugging.' },
+      // { name: 'VS Code', icon: 'visualstudiocode', color: '007ACC', desc: 'A code editor for software development and debugging.' },
     ],
   },
 ]

@@ -7,8 +7,9 @@ import site from '../config/site.js'
 
 const company = [
   { to: '/about', label: 'About Us' },
+    { to: '/services', label: 'Our Services' },
   { to: '/blog', label: 'Blog' },
-  { to: '/services', label: 'Our Services' },
+
   // { to: '/services#web-development', label: 'Landing Pages' },
   // { to: '/blog', label: 'Latest News' },
 ]
@@ -18,7 +19,7 @@ const support = [
   { to: '/privacy-policy', label: 'Privacy Policy' },
   { to: '/terms-and-conditions', label: 'Terms & Conditions' },
   { to: '/sms-terms', label: 'SMS Terms' },
-  { to: '/#faq', label: "FAQ's" },
+  // { to: '/#faq', label: "FAQ's" },
 ]
 
 const socials = [
