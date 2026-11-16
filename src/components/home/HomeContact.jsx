@@ -1,5 +1,5 @@
-import ContactForm from '../contact/ContactForm.jsx'
-import './HomeContact.css'
+import ContactForm from "../contact/ContactForm.jsx";
+import "./HomeContact.css";
 
 export default function HomeContact() {
   return (
@@ -16,5 +16,5 @@ export default function HomeContact() {
         </div>
       </div>
     </section>
-  )
+  );
 }

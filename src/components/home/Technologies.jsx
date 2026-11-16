@@ -1,104 +1,353 @@
-
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 
 const categories = [
   {
-    id: 'web',
-    label: 'Web Development',
-    subtitle: 'Modern web technologies and development frameworks.',
+    id: "web",
+    label: "Web Development",
+    subtitle: "Modern web technologies and development frameworks.",
     technologies: [
-      { name: 'React', icon: 'react', color: '61DAFB', desc: 'A component-based JavaScript library for building interactive user interfaces.' },
-      { name: 'Next.js', icon: 'nextdotjs', color: 'FFFFFF', desc: 'A React framework for production-ready web applications.' },
-      { name: 'JavaScript', icon: 'javascript', color: 'F7DF1E', desc: 'A core programming language for interactive web experiences.' },
-      { name: 'TypeScript', icon: 'typescript', color: '3178C6', desc: 'JavaScript with static types for scalable applications.' },
-      { name: 'Node.js', icon: 'nodedotjs', color: '5FA04E', desc: 'A JavaScript runtime for server-side applications.' },
-      { name: 'Express.js', icon: 'express', color: 'FFFFFF', desc: 'A lightweight framework for building web APIs and backend services.' },
-      { name: 'MongoDB', icon: 'mongodb', color: '47A248', desc: 'A document database for flexible application data.' },
-      { name: 'PostgreSQL', icon: 'postgresql', color: '4169E1', desc: 'A powerful relational database system.' },
-      { name: 'Tailwind CSS', icon: 'tailwindcss', color: '06B6D4', desc: 'A utility-first CSS framework for custom responsive interfaces.' },
-      { name: 'HTML5', icon: 'html5', color: 'E34F26', desc: 'The standard markup language for structuring web content.' },
-      { name: 'CSS3', icon: 'css3', color: '1572B6', desc: 'The styling language behind modern web interfaces.' },
+      {
+        name: "React",
+        icon: "react",
+        color: "61DAFB",
+        desc: "A component-based JavaScript library for building interactive user interfaces.",
+      },
+      {
+        name: "Next.js",
+        icon: "nextdotjs",
+        color: "FFFFFF",
+        desc: "A React framework for production-ready web applications.",
+      },
+      {
+        name: "JavaScript",
+        icon: "javascript",
+        color: "F7DF1E",
+        desc: "A core programming language for interactive web experiences.",
+      },
+      {
+        name: "TypeScript",
+        icon: "typescript",
+        color: "3178C6",
+        desc: "JavaScript with static types for scalable applications.",
+      },
+      {
+        name: "Node.js",
+        icon: "nodedotjs",
+        color: "5FA04E",
+        desc: "A JavaScript runtime for server-side applications.",
+      },
+      {
+        name: "Express.js",
+        icon: "express",
+        color: "FFFFFF",
+        desc: "A lightweight framework for building web APIs and backend services.",
+      },
+      {
+        name: "MongoDB",
+        icon: "mongodb",
+        color: "47A248",
+        desc: "A document database for flexible application data.",
+      },
+      {
+        name: "PostgreSQL",
+        icon: "postgresql",
+        color: "4169E1",
+        desc: "A powerful relational database system.",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: "tailwindcss",
+        color: "06B6D4",
+        desc: "A utility-first CSS framework for custom responsive interfaces.",
+      },
+      {
+        name: "HTML5",
+        icon: "html5",
+        color: "E34F26",
+        desc: "The standard markup language for structuring web content.",
+      },
+      {
+        name: "CSS3",
+        icon: "css3",
+        color: "1572B6",
+        desc: "The styling language behind modern web interfaces.",
+      },
       // { name: 'Vite', icon: 'vite', color: '646CFF', desc: 'A fast development and build tool for modern frontend projects.' },
-      { name: 'Redux', icon: 'redux', color: '764ABC', desc: 'Predictable state management for JavaScript applications.' },
-      { name: 'Prisma', icon: 'prisma', color: 'FFFFFF', desc: 'A modern database toolkit and ORM for application development.' },
+      {
+        name: "Redux",
+        icon: "redux",
+        color: "764ABC",
+        desc: "Predictable state management for JavaScript applications.",
+      },
+      {
+        name: "Prisma",
+        icon: "prisma",
+        color: "FFFFFF",
+        desc: "A modern database toolkit and ORM for application development.",
+      },
       // { name: 'Git', icon: 'git', color: 'F05032', desc: 'Version control for managing and tracking code changes.' },
       // { name: 'GitHub', icon: 'github', color: 'FFFFFF', desc: 'A platform for code collaboration and software development.' },
     ],
   },
   {
-    id: 'app',
-    label: 'App Development',
-    subtitle: 'Tools for building mobile applications and digital products.',
+    id: "app",
+    label: "App Development",
+    subtitle: "Tools for building mobile applications and digital products.",
     technologies: [
-      { name: 'Flutter', icon: 'flutter', color: '02569B', desc: 'A UI framework for building cross-platform mobile applications.' },
-      { name: 'Dart', icon: 'dart', color: '0175C2', desc: 'A programming language used to build Flutter applications.' },
-      { name: 'React Native', icon: 'react', color: '61DAFB', desc: 'A framework for building native mobile applications with React.' },
-      { name: 'Android', icon: 'android', color: '3DDC84', desc: 'A platform for developing applications for Android devices.' },
-      { name: 'Kotlin', icon: 'kotlin', color: '7F52FF', desc: 'A modern programming language for Android and backend development.' },
-      { name: 'Swift', icon: 'swift', color: 'F05138', desc: 'A programming language for building applications across Apple platforms.' },
-      { name: 'Firebase', icon: 'firebase', color: 'DD2C00', desc: 'A development platform offering authentication, databases and app services.' },
-      { name: 'Expo', icon: 'expo', color: 'FFFFFF', desc: 'A framework and platform for developing React Native applications.' },
-      { name: 'Java', icon: 'java', color: 'ED8B00', desc: 'A widely used programming language for application development.' },
+      {
+        name: "Flutter",
+        icon: "flutter",
+        color: "02569B",
+        desc: "A UI framework for building cross-platform mobile applications.",
+      },
+      {
+        name: "Dart",
+        icon: "dart",
+        color: "0175C2",
+        desc: "A programming language used to build Flutter applications.",
+      },
+      {
+        name: "React Native",
+        icon: "react",
+        color: "61DAFB",
+        desc: "A framework for building native mobile applications with React.",
+      },
+      {
+        name: "Android",
+        icon: "android",
+        color: "3DDC84",
+        desc: "A platform for developing applications for Android devices.",
+      },
+      {
+        name: "Kotlin",
+        icon: "kotlin",
+        color: "7F52FF",
+        desc: "A modern programming language for Android and backend development.",
+      },
+      {
+        name: "Swift",
+        icon: "swift",
+        color: "F05138",
+        desc: "A programming language for building applications across Apple platforms.",
+      },
+      {
+        name: "Firebase",
+        icon: "firebase",
+        color: "DD2C00",
+        desc: "A development platform offering authentication, databases and app services.",
+      },
+      {
+        name: "Expo",
+        icon: "expo",
+        color: "FFFFFF",
+        desc: "A framework and platform for developing React Native applications.",
+      },
+      {
+        name: "Java",
+        icon: "java",
+        color: "ED8B00",
+        desc: "A widely used programming language for application development.",
+      },
     ],
   },
   {
-    id: 'ai',
-    label: 'AI & Automation',
-    subtitle: 'Intelligent systems, machine learning and workflow automation.',
+    id: "ai",
+    label: "AI & Automation",
+    subtitle: "Intelligent systems, machine learning and workflow automation.",
     technologies: [
-      { name: 'Python', icon: 'python', color: '3776AB', desc: 'A versatile language used in automation, data science and AI.' },
-      { name: 'TensorFlow', icon: 'tensorflow', color: 'FF6F00', desc: 'A machine learning platform for developing intelligent models.' },
-      { name: 'PyTorch', icon: 'pytorch', color: 'EE4C2C', desc: 'A deep learning framework for research and production.' },
-      { name: 'OpenAI', icon: 'openai', color: 'FFFFFF', desc: 'AI models and APIs for intelligent application experiences.' },
-      { name: 'Hugging Face', icon: 'huggingface', color: 'FFD21E', desc: 'Tools and models for machine learning and natural language processing.' },
-      { name: 'FastAPI', icon: 'fastapi', color: '009688', desc: 'A modern Python framework for building high-performance APIs.' },
-      { name: 'n8n', icon: 'n8n', color: 'EA4B71', desc: 'Workflow automation for connecting applications and services.' },
-      { name: 'Jupyter', icon: 'jupyter', color: 'F37626', desc: 'An interactive environment for data science and experimentation.' },
+      {
+        name: "Python",
+        icon: "python",
+        color: "3776AB",
+        desc: "A versatile language used in automation, data science and AI.",
+      },
+      {
+        name: "TensorFlow",
+        icon: "tensorflow",
+        color: "FF6F00",
+        desc: "A machine learning platform for developing intelligent models.",
+      },
+      {
+        name: "PyTorch",
+        icon: "pytorch",
+        color: "EE4C2C",
+        desc: "A deep learning framework for research and production.",
+      },
+      {
+        name: "OpenAI",
+        icon: "openai",
+        color: "FFFFFF",
+        desc: "AI models and APIs for intelligent application experiences.",
+      },
+      {
+        name: "Hugging Face",
+        icon: "huggingface",
+        color: "FFD21E",
+        desc: "Tools and models for machine learning and natural language processing.",
+      },
+      {
+        name: "FastAPI",
+        icon: "fastapi",
+        color: "009688",
+        desc: "A modern Python framework for building high-performance APIs.",
+      },
+      {
+        name: "n8n",
+        icon: "n8n",
+        color: "EA4B71",
+        desc: "Workflow automation for connecting applications and services.",
+      },
+      {
+        name: "Jupyter",
+        icon: "jupyter",
+        color: "F37626",
+        desc: "An interactive environment for data science and experimentation.",
+      },
     ],
   },
   {
-    id: 'video',
-    label: 'Video Editing',
-    subtitle: 'Professional tools for video production and motion content.',
+    id: "video",
+    label: "Video Editing",
+    subtitle: "Professional tools for video production and motion content.",
     technologies: [
-      { name: 'Premiere Pro', icon: 'adobepremierepro', color: '9999FF', desc: 'Professional video editing and production software.' },
-      { name: 'After Effects', icon: 'adobeaftereffects', color: '9999FF', desc: 'Motion graphics and visual effects software.' },
-      { name: 'DaVinci Resolve', icon: 'blackmagicdesign', color: 'FFFFFF', desc: 'Professional video editing, color grading and post-production.' },
-      { name: 'Blender', icon: 'blender', color: 'E87D0D', desc: '3D creation software for modeling, animation and visual effects.' },
-      { name: 'Audacity', icon: 'audacity', color: '0000CC', desc: 'Audio editing and recording software.' },
-      { name: 'CapCut', icon: 'capcut', color: 'FFFFFF', desc: 'Video editing tools for social and creative content.' },
+      {
+        name: "Premiere Pro",
+        icon: "adobepremierepro",
+        color: "9999FF",
+        desc: "Professional video editing and production software.",
+      },
+      {
+        name: "After Effects",
+        icon: "adobeaftereffects",
+        color: "9999FF",
+        desc: "Motion graphics and visual effects software.",
+      },
+      {
+        name: "DaVinci Resolve",
+        icon: "blackmagicdesign",
+        color: "FFFFFF",
+        desc: "Professional video editing, color grading and post-production.",
+      },
+      {
+        name: "Blender",
+        icon: "blender",
+        color: "E87D0D",
+        desc: "3D creation software for modeling, animation and visual effects.",
+      },
+      {
+        name: "Audacity",
+        icon: "audacity",
+        color: "0000CC",
+        desc: "Audio editing and recording software.",
+      },
+      {
+        name: "CapCut",
+        icon: "capcut",
+        color: "FFFFFF",
+        desc: "Video editing tools for social and creative content.",
+      },
     ],
   },
   {
-    id: 'design',
-    label: 'Graphic Design',
-    subtitle: 'Creative software for visual identity and digital experiences.',
+    id: "design",
+    label: "Graphic Design",
+    subtitle: "Creative software for visual identity and digital experiences.",
     technologies: [
-      { name: 'Photoshop', icon: 'adobephotoshop', color: '31A8FF', desc: 'Image editing, photo manipulation and digital artwork.' },
-      { name: 'Illustrator', icon: 'adobeillustrator', color: 'FF9A00', desc: 'Vector graphics and professional illustration software.' },
-      { name: 'InDesign', icon: 'adobeindesign', color: 'FF3366', desc: 'Professional layout and publishing design software.' },
-      { name: 'Figma', icon: 'figma', color: 'F24E1E', desc: 'Collaborative interface design and prototyping.' },
-      { name: 'Canva', icon: 'canva', color: '00C4CC', desc: 'A visual design platform for creative content.' },
-      { name: 'CorelDRAW', icon: 'coreldraw', color: '00A859', desc: 'Vector illustration and graphic design software.' },
-      { name: 'Blender', icon: 'blender', color: 'E87D0D', desc: '3D design and visual creation software.' },
+      {
+        name: "Photoshop",
+        icon: "adobephotoshop",
+        color: "31A8FF",
+        desc: "Image editing, photo manipulation and digital artwork.",
+      },
+      {
+        name: "Illustrator",
+        icon: "adobeillustrator",
+        color: "FF9A00",
+        desc: "Vector graphics and professional illustration software.",
+      },
+      {
+        name: "InDesign",
+        icon: "adobeindesign",
+        color: "FF3366",
+        desc: "Professional layout and publishing design software.",
+      },
+      {
+        name: "Figma",
+        icon: "figma",
+        color: "F24E1E",
+        desc: "Collaborative interface design and prototyping.",
+      },
+      {
+        name: "Canva",
+        icon: "canva",
+        color: "00C4CC",
+        desc: "A visual design platform for creative content.",
+      },
+      {
+        name: "CorelDRAW",
+        icon: "coreldraw",
+        color: "00A859",
+        desc: "Vector illustration and graphic design software.",
+      },
+      {
+        name: "Blender",
+        icon: "blender",
+        color: "E87D0D",
+        desc: "3D design and visual creation software.",
+      },
     ],
   },
   {
-    id: 'engineering',
-    label: 'Programming',
-    subtitle: 'Programming languages and engineering development tools.',
+    id: "engineering",
+    label: "Programming",
+    subtitle: "Programming languages and engineering development tools.",
     technologies: [
-      { name: 'C++', icon: 'cplusplus', color: '00599C', desc: 'A high-performance programming language for software and systems.' },
-      { name: 'Java', icon: 'java', color: 'ED8B00', desc: 'An object-oriented language for enterprise and application development.' },
-      { name: 'C#', icon: 'csharp', color: '512BD4', desc: 'A programming language for applications and software development.' },
-      { name: 'PHP', icon: 'php', color: '777BB4', desc: 'A server-side language for dynamic websites and applications.' },
-      { name: 'Python', icon: 'python', color: '3776AB', desc: 'A general-purpose programming language for software and automation.' },
-      { name: 'Go', icon: 'go', color: '00ADD8', desc: 'A compiled language designed for efficient software and services.' },
-      { name: 'Rust', icon: 'rust', color: 'FFFFFF', desc: 'A systems programming language focused on performance and safety.' },
+      {
+        name: "C++",
+        icon: "cplusplus",
+        color: "00599C",
+        desc: "A high-performance programming language for software and systems.",
+      },
+      {
+        name: "Java",
+        icon: "java",
+        color: "ED8B00",
+        desc: "An object-oriented language for enterprise and application development.",
+      },
+      {
+        name: "C#",
+        icon: "csharp",
+        color: "512BD4",
+        desc: "A programming language for applications and software development.",
+      },
+      {
+        name: "PHP",
+        icon: "php",
+        color: "777BB4",
+        desc: "A server-side language for dynamic websites and applications.",
+      },
+      {
+        name: "Python",
+        icon: "python",
+        color: "3776AB",
+        desc: "A general-purpose programming language for software and automation.",
+      },
+      {
+        name: "Go",
+        icon: "go",
+        color: "00ADD8",
+        desc: "A compiled language designed for efficient software and services.",
+      },
+      {
+        name: "Rust",
+        icon: "rust",
+        color: "FFFFFF",
+        desc: "A systems programming language focused on performance and safety.",
+      },
       // { name: 'VS Code', icon: 'visualstudiocode', color: '007ACC', desc: 'A code editor for software development and debugging.' },
     ],
   },
-]
+];
 
 // Renders a technology logo with a fallback when its image cannot load.
 function TechnologyLogo({ technology }) {
@@ -110,8 +359,8 @@ function TechnologyLogo({ technology }) {
         loading="lazy"
         className="object-contain transition-transform duration-500 h-7 w-7 group-hover:scale-110"
         onError={(event) => {
-          event.currentTarget.style.display = 'none'
-          event.currentTarget.nextElementSibling.style.display = 'grid'
+          event.currentTarget.style.display = "none";
+          event.currentTarget.nextElementSibling.style.display = "grid";
         }}
       />
 
@@ -122,30 +371,30 @@ function TechnologyLogo({ technology }) {
         {technology.name.slice(0, 2).toUpperCase()}
       </span>
     </div>
-  )
+  );
 }
 
 // Displays the selected technology information in a glass modal.
 function TechnologyModal({ technology, onClose }) {
   useEffect(() => {
     function handleKeyDown(event) {
-      if (event.key === 'Escape') onClose()
+      if (event.key === "Escape") onClose();
     }
 
-    document.addEventListener('keydown', handleKeyDown)
-    document.body.style.overflow = 'hidden'
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown)
-      document.body.style.overflow = ''
-    }
-  }, [onClose])
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
 
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 p-5 backdrop-blur-md"
       onMouseDown={(event) => {
-        if (event.target === event.currentTarget) onClose()
+        if (event.target === event.currentTarget) onClose();
       }}
     >
       <div
@@ -196,17 +445,17 @@ function TechnologyModal({ technology, onClose }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 // Creates the full-screen interactive technologies showcase.
 export default function Technologies() {
-  const [activeCategory, setActiveCategory] = useState('web')
-  const [selectedTechnology, setSelectedTechnology] = useState(null)
+  const [activeCategory, setActiveCategory] = useState("web");
+  const [selectedTechnology, setSelectedTechnology] = useState(null);
 
   const currentCategory =
     categories.find((category) => category.id === activeCategory) ||
-    categories[0]
+    categories[0];
 
   return (
     <section className="relative isolate flex min-h-[100svh] w-full items-center overflow-hidden bg-[#000000] py-20 text-white sm:py-24">
@@ -237,7 +486,7 @@ export default function Technologies() {
             className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:justify-center sm:gap-2"
           >
             {categories.map((category) => {
-              const isActive = activeCategory === category.id
+              const isActive = activeCategory === category.id;
 
               return (
                 <button
@@ -246,18 +495,18 @@ export default function Technologies() {
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => {
-                    setActiveCategory(category.id)
-                    setSelectedTechnology(null)
+                    setActiveCategory(category.id);
+                    setSelectedTechnology(null);
                   }}
                   className={`flex min-h-[48px] w-full items-center justify-center rounded-full border px-2 py-2 text-center font-display text-[10px] font-semibold leading-tight transition-all duration-300 sm:min-h-0 sm:w-auto sm:px-5 sm:py-3 sm:text-sm ${
                     isActive
-                      ? 'border-[#45BEB3]/60 bg-[#45BEB3]/15 text-[#65D7C8] shadow-[0_0_24px_rgba(69,190,179,0.09)]'
-                      : 'border-white/10 bg-white/[0.035] text-white/55 hover:border-[#45BEB3]/35 hover:bg-[#45BEB3]/[0.07] hover:text-white'
+                      ? "border-[#45BEB3]/60 bg-[#45BEB3]/15 text-[#65D7C8] shadow-[0_0_24px_rgba(69,190,179,0.09)]"
+                      : "border-white/10 bg-white/[0.035] text-white/55 hover:border-[#45BEB3]/35 hover:bg-[#45BEB3]/[0.07] hover:text-white"
                   }`}
                 >
                   {category.label}
                 </button>
-              )
+              );
             })}
           </div>
         </div>
@@ -275,7 +524,7 @@ export default function Technologies() {
         {/* Technology cards */}
         <div
           key={currentCategory.id}
-className="grid max-w-6xl grid-cols-4 gap-2 mx-auto mt-7 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
+          className="grid max-w-6xl grid-cols-4 gap-2 mx-auto mt-7 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
         >
           {currentCategory.technologies.map((technology, index) => (
             <button
@@ -359,5 +608,5 @@ className="grid max-w-6xl grid-cols-4 gap-2 mx-auto mt-7 sm:grid-cols-3 sm:gap-4
         }
       `}</style>
     </section>
-  )
+  );
 }

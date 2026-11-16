@@ -58,7 +58,7 @@ function LoadingScreen() {
         interactive={false}
       />
 
-      <div className="relative z-10 flex w-full flex-col items-center px-6">
+      <div className="relative z-10 flex flex-col items-center w-full px-6">
         <img
           src={logolight}
           alt="Bitnex Technologies"
@@ -66,13 +66,13 @@ function LoadingScreen() {
           draggable="false"
         />
 
-        <div className="mb-5 flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-3 mb-5">
           <p className="text-[10px] font-medium uppercase tracking-[5px] text-white/65 sm:text-xs">
             Initializing Experience
           </p>
 
           <div className="flex items-center gap-2">
-            <span className="h-1 w-1 animate-pulse rounded-full bg-emerald-300" />
+            <span className="w-1 h-1 rounded-full animate-pulse bg-emerald-300" />
             <span className="h-1 w-1 animate-pulse rounded-full bg-emerald-300 [animation-delay:200ms]" />
             <span className="h-1 w-1 animate-pulse rounded-full bg-emerald-300 [animation-delay:400ms]" />
           </div>
@@ -155,7 +155,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex flex-col min-h-screen">
       {isLoading && <LoadingScreen />}
 
       <ScrollToTop />
@@ -167,7 +167,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/services" element={<Services />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/blog/:slug" element={<BlogPost />} /> //dynamic route working on blogs page
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<Terms />} />
           <Route path="/sms-terms" element={<SmsTerms />} />

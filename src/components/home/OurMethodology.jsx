@@ -1,4 +1,3 @@
-
 import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -96,7 +95,7 @@ export default function OurMethodology() {
           onUpdate: (self) => {
             const nextIndex = Math.min(
               methodologySteps.length - 1,
-              Math.floor(self.progress * methodologySteps.length)
+              Math.floor(self.progress * methodologySteps.length),
             );
 
             changeActiveStep(nextIndex);
@@ -119,7 +118,7 @@ export default function OurMethodology() {
             end: "+=3000",
             scrub: 1,
           },
-        }
+        },
       );
 
       return () => {
@@ -149,7 +148,7 @@ export default function OurMethodology() {
               onEnter: () => changeActiveStep(index),
               onEnterBack: () => changeActiveStep(index),
             },
-          }
+          },
         );
       });
     });
@@ -160,11 +159,7 @@ export default function OurMethodology() {
   const activeStep = methodologySteps[activeIndex];
 
   return (
-    <section
-      className="our-methodology"
-      ref={sectionRef}
-      id="our-methodology"
-    >
+    <section className="our-methodology" ref={sectionRef} id="our-methodology">
       <div className="methodology-container">
         <div className="methodology-heading">
           <span className="methodology-eyebrow">
@@ -176,8 +171,8 @@ export default function OurMethodology() {
           </h2>
 
           <p>
-            Every great solution follows a process.
-            Ours is built to turn complexity into capability.
+            Every great solution follows a process. Ours is built to turn
+            complexity into capability.
           </p>
         </div>
 
@@ -209,17 +204,13 @@ export default function OurMethodology() {
                 STAGE {activeStep.number} / 06
               </span>
 
-              <h3 key={activeStep.number}>
-                {activeStep.title}
-              </h3>
+              <h3 key={activeStep.number}>{activeStep.title}</h3>
 
               <p key={`${activeStep.number}-description`}>
                 {activeStep.description}
               </p>
 
-              <span className="center-detail">
-                {activeStep.detail}
-              </span>
+              <span className="center-detail">{activeStep.detail}</span>
             </div>
 
             {methodologySteps.map((step, index) => (
@@ -229,13 +220,9 @@ export default function OurMethodology() {
                 }`}
                 key={step.number}
               >
-                <span className="method-stage-number">
-                  {step.number}
-                </span>
+                <span className="method-stage-number">{step.number}</span>
 
-                <span className="method-stage-title">
-                  {step.title}
-                </span>
+                <span className="method-stage-title">{step.title}</span>
               </div>
             ))}
 
@@ -260,9 +247,7 @@ export default function OurMethodology() {
                 </div>
 
                 <div className="mobile-step-content">
-                  <span className="mobile-step-detail">
-                    {step.detail}
-                  </span>
+                  <span className="mobile-step-detail">{step.detail}</span>
 
                   <h3>{step.title}</h3>
 

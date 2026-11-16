@@ -1,4 +1,3 @@
-
 const paths = {
   web: (
     <>
@@ -132,9 +131,9 @@ const paths = {
       <path d="M12 7v6M12 16.5h.01" />
     </>
   ),
-}
+};
 
-export default function Icon({ name, className = 'h-6 w-6' }) {
+export default function Icon({ name, className = "w-6 h-6" }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -148,5 +147,5 @@ export default function Icon({ name, className = 'h-6 w-6' }) {
     >
       {paths[name] || paths.alert}
     </svg>
-  )
+  );
 }

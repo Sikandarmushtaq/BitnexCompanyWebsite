@@ -1,5 +1,4 @@
-
-import { values } from '../../data/content.js'
+import { values } from "../../data/content.js";
 
 export default function Values() {
   return (
@@ -16,9 +15,9 @@ export default function Values() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2">
+        <div className="grid mt-14 gap-x-10 gap-y-12 sm:grid-cols-2">
           {values.map((value) => (
-            <div key={value.title} className="border-t-2 border-navy pt-6">
+            <div key={value.title} className="pt-6 border-t-2 border-navy">
               <h3 className="text-xl font-semibold">{value.title}</h3>
               <p className="mt-3 leading-relaxed">{value.desc}</p>
             </div>
@@ -26,5 +25,5 @@ export default function Values() {
         </div>
       </div>
     </section>
-  )
+  );
 }

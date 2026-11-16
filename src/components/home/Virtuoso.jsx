@@ -1,65 +1,65 @@
-import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Virtuoso() {
-  const sectionRef = useRef(null)
-  const topTextRef = useRef(null)
-  const bottomTextRef = useRef(null)
-  const paragraphRef = useRef(null)
+  const sectionRef = useRef(null);
+  const topTextRef = useRef(null);
+  const bottomTextRef = useRef(null);
+  const paragraphRef = useRef(null);
 
   useEffect(() => {
-    const section = sectionRef.current
-    if (!section) return
+    const section = sectionRef.current;
+    if (!section) return;
 
-    const mm = gsap.matchMedia()
+    const mm = gsap.matchMedia();
 
     mm.add(
       {
-        isMobile: '(max-width: 767px)',
-        isDesktop: '(min-width: 768px)',
+        isMobile: "(max-width: 767px)",
+        isDesktop: "(min-width: 768px)",
       },
       (context) => {
-        const { isMobile } = context.conditions
+        const { isMobile } = context.conditions;
 
         const timeline = gsap.timeline({
           scrollTrigger: {
             trigger: section,
-            start: isMobile ? 'top 70%' : 'top 75%',
-            end: isMobile ? 'center 40%' : 'center 45%',
+            start: isMobile ? "top 70%" : "top 75%",
+            end: isMobile ? "center 40%" : "center 45%",
             scrub: 0.6,
             invalidateOnRefresh: true,
           },
-        })
+        });
 
         // Mobile: movement kam karne ke liye
-        const gap = 6          // heading aur paragraph ke beech gap
-        const spread = 0.85    // 1 = poora, chota number = kam movement
+        const gap = 6; // heading aur paragraph ke beech gap
+        const spread = 0.85; // 1 = poora, chota number = kam movement
 
         const topMove = isMobile
           ? { y: () => -(paragraphRef.current.offsetHeight / 2) * spread - gap }
-          : { yPercent: -24 }
+          : { yPercent: -24 };
         const bottomMove = isMobile
           ? { y: () => (paragraphRef.current.offsetHeight / 2) * spread + gap }
-          : { yPercent: 24 }
+          : { yPercent: 24 };
 
         timeline
-          .to(topTextRef.current, { ...topMove, ease: 'none' }, 0)
-          .to(bottomTextRef.current, { ...bottomMove, ease: 'none' }, 0)
+          .to(topTextRef.current, { ...topMove, ease: "none" }, 0)
+          .to(bottomTextRef.current, { ...bottomMove, ease: "none" }, 0)
           .fromTo(
             paragraphRef.current,
             { autoAlpha: 0, scale: 0.96 },
-            { autoAlpha: 1, scale: 1, ease: 'none' },
-            0.25
-          )
+            { autoAlpha: 1, scale: 1, ease: "none" },
+            0.25,
+          );
       },
-      section
-    )
+      section,
+    );
 
-    return () => mm.revert()
-  }, [])
+    return () => mm.revert();
+  }, []);
 
   return (
     <section
@@ -91,17 +91,17 @@ export default function Virtuoso() {
 
           <div
             ref={paragraphRef}
-            className="invisible absolute inset-0 z-10 flex items-center justify-center px-5"
+            className="absolute inset-0 z-10 flex items-center justify-center invisible px-5"
           >
             <p className="w-full max-w-[34rem] text-center text-sm leading-7 text-white/80 sm:text-base sm:leading-8 sm:text-white/65 lg:text-lg">
-              Bitnex Technologies engineers software, security and growth
-              for ambitious businesses. From a first idea to a scaled
-              product, we design, build and market solutions that deliver
+              Bitnex Technologies engineers software, security and growth for
+              ambitious businesses. From a first idea to a scaled product, we
+              design, build and market solutions that deliver
               <span className="text-[#45BEB3]"> measurable results.</span>
             </p>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

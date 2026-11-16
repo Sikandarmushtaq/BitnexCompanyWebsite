@@ -1,136 +1,125 @@
-
-import { createPortal } from 'react-dom'
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
-import logo from '../assets/logo.png'
-import Icon from './Icon.jsx'
-import CursorFollower from './CursorFollower.jsx'
-import { services } from '../data/content.js'
-import './Navbar.css'
+import { createPortal } from "react-dom";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import logo from "../assets/logo.png";
+import Icon from "./Icon.jsx";
+import CursorFollower from "./CursorFollower.jsx";
+import { services } from "../data/content.js";
+import "./Navbar.css";
 
 const categories = [
-  'Development & Technology',
-  'Digital Marketing & Growth',
-  'Creative & Visual Design',
-]
+  "Development & Technology",
+  "Digital Marketing & Growth",
+  "Creative & Visual Design",
+];
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const [aboutOpen, setAboutOpen] = useState(false)
-  const [servicesOpen, setServicesOpen] = useState(false)
-  const [mobileAboutOpen, setMobileAboutOpen] = useState(false)
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const { pathname } = useLocation()
-  const navRef = useRef(null)
+  const { pathname } = useLocation();
+  const navRef = useRef(null);
 
   // const isHome = pathname === '/'
-  const isHome = true
+  const isHome = true;
 
   const groupedServices = useMemo(() => {
     const visibleServices = services.filter(
       (service) =>
-        service.slug !== 'fix-bug-error' &&
-        !service.title.toLowerCase().includes('technical support')
-    )
+        service.slug !== "fix-bug-error" &&
+        !service.title.toLowerCase().includes("technical support"),
+    );
 
     return categories.map((category) => ({
       title: category,
-      items: visibleServices.filter(
-        (service) => service.category === category
-      ),
-    }))
-  }, [])
+      items: visibleServices.filter((service) => service.category === category),
+    }));
+  }, []);
 
   // Hide the navbar when the user scrolls down.
   useEffect(() => {
     function handleScroll() {
-      setIsScrolled(window.scrollY > 10)
+      setIsScrolled(window.scrollY > 10);
     }
 
-    handleScroll()
+    handleScroll();
 
-    window.addEventListener('scroll', handleScroll, {
+    window.addEventListener("scroll", handleScroll, {
       passive: true,
-    })
+    });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // Close all menus when the route changes.
   useEffect(() => {
-    setMobileOpen(false)
-    setAboutOpen(false)
-    setServicesOpen(false)
-    setMobileAboutOpen(false)
-    setMobileServicesOpen(false)
-  }, [pathname])
+    setMobileOpen(false);
+    setAboutOpen(false);
+    setServicesOpen(false);
+    setMobileAboutOpen(false);
+    setMobileServicesOpen(false);
+  }, [pathname]);
 
   // Close desktop dropdowns when clicking outside or pressing Escape.
   useEffect(() => {
     function handleOutsideClick(event) {
       if (navRef.current && !navRef.current.contains(event.target)) {
-        setAboutOpen(false)
-        setServicesOpen(false)
+        setAboutOpen(false);
+        setServicesOpen(false);
       }
     }
 
     function handleEscape(event) {
-      if (event.key === 'Escape') {
-        setAboutOpen(false)
-        setServicesOpen(false)
-        setMobileOpen(false)
+      if (event.key === "Escape") {
+        setAboutOpen(false);
+        setServicesOpen(false);
+        setMobileOpen(false);
       }
     }
 
-    document.addEventListener('mousedown', handleOutsideClick)
-    document.addEventListener('keydown', handleEscape)
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("keydown", handleEscape);
 
     return () => {
-      document.removeEventListener('mousedown', handleOutsideClick)
-      document.removeEventListener('keydown', handleEscape)
-    }
-  }, [])
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
 
   // Close every menu after selecting a navigation link.
   function closeAllMenus() {
-    setMobileOpen(false)
-    setAboutOpen(false)
-    setServicesOpen(false)
-    setMobileAboutOpen(false)
-    setMobileServicesOpen(false)
+    setMobileOpen(false);
+    setAboutOpen(false);
+    setServicesOpen(false);
+    setMobileAboutOpen(false);
+    setMobileServicesOpen(false);
   }
 
   const getNavLinkClass = ({ isActive }) =>
-    `navbar-link${isActive ? ' is-active' : ''}`
+    `navbar-link${isActive ? " is-active" : ""}`;
 
   const navbarContent = (
     <>
       <header
         ref={navRef}
         className={`site-navbar ${
-          mobileOpen
-            ? 'is-mobile-open'
-            : isHome
-              ? 'is-home'
-              : 'is-inner-page'
-        } ${isScrolled && !mobileOpen ? 'is-hidden' : ''}`}
+          mobileOpen ? "is-mobile-open" : isHome ? "is-home" : "is-inner-page"
+        } ${isScrolled && !mobileOpen ? "is-hidden" : ""}`}
       >
-        <nav className={`navbar-inner ${mobileOpen ? 'menu-open' : ''}`}>
+        <nav className={`navbar-inner ${mobileOpen ? "menu-open" : ""}`}>
           <Link
             to="/"
             aria-label="Bitnex Technologies LLC home"
             onClick={closeAllMenus}
             className="navbar-brand"
           >
-            <img
-              src={logo}
-              alt="Bitnex Technologies LLC"
-              draggable="false"
-            />
+            <img src={logo} alt="Bitnex Technologies LLC" draggable="false" />
           </Link>
 
           <ul className="navbar-desktop-links">
@@ -144,17 +133,16 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => {
-                  setAboutOpen((value) => !value)
-                  setServicesOpen(false)
+                  setAboutOpen((value) => !value);
+                  setServicesOpen(false);
                 }}
                 aria-expanded={aboutOpen}
-                className={`navbar-trigger ${aboutOpen ? 'is-active' : ''}`}
+                className={`navbar-trigger ${aboutOpen ? "is-active" : ""}`}
               >
                 About Us
-
                 <svg
                   viewBox="0 0 20 20"
-                  className={`navbar-chevron ${aboutOpen ? 'is-open' : ''}`}
+                  className={`navbar-chevron ${aboutOpen ? "is-open" : ""}`}
                   fill="currentColor"
                   aria-hidden="true"
                 >
@@ -171,13 +159,11 @@ export default function Navbar() {
                       className="navbar-about-link"
                     >
                       <span className="navbar-icon-box">
-                        <Icon name="web" className="h-5 w-5" />
+                        <Icon name="web" className="w-5 h-5" />
                       </span>
 
                       <span>
-                        <span className="navbar-item-title">
-                          About Bitnex
-                        </span>
+                        <span className="navbar-item-title">About Bitnex</span>
                         <span className="navbar-item-description">
                           Our company and approach
                         </span>
@@ -190,13 +176,11 @@ export default function Navbar() {
                       className="navbar-about-link"
                     >
                       <span className="navbar-icon-box">
-                        <Icon name="code" className="h-5 w-5" />
+                        <Icon name="code" className="w-5 h-5" />
                       </span>
 
                       <span>
-                        <span className="navbar-item-title">
-                          Our Blog
-                        </span>
+                        <span className="navbar-item-title">Our Blog</span>
                         <span className="navbar-item-description">
                           Ideas, insights and updates
                         </span>
@@ -211,21 +195,16 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => {
-                  setServicesOpen((value) => !value)
-                  setAboutOpen(false)
+                  setServicesOpen((value) => !value);
+                  setAboutOpen(false);
                 }}
                 aria-expanded={servicesOpen}
-                className={`navbar-trigger ${
-                  servicesOpen ? 'is-active' : ''
-                }`}
+                className={`navbar-trigger ${servicesOpen ? "is-active" : ""}`}
               >
                 Our Services
-
                 <svg
                   viewBox="0 0 20 20"
-                  className={`navbar-chevron ${
-                    servicesOpen ? 'is-open' : ''
-                  }`}
+                  className={`navbar-chevron ${servicesOpen ? "is-open" : ""}`}
                   fill="currentColor"
                   aria-hidden="true"
                 >
@@ -238,10 +217,7 @@ export default function Navbar() {
                   <div className="navbar-services-card">
                     <div className="navbar-services-grid">
                       {groupedServices.map((group) => (
-                        <div
-                          key={group.title}
-                          className="navbar-service-group"
-                        >
+                        <div key={group.title} className="navbar-service-group">
                           <div className="navbar-group-heading">
                             <span className="navbar-group-dot" />
                             <h3>{group.title}</h3>
@@ -258,7 +234,7 @@ export default function Navbar() {
                                   <span className="navbar-service-icon">
                                     <Icon
                                       name={service.icon}
-                                      className="h-4 w-4"
+                                      className="w-4 h-4"
                                     />
                                   </span>
 
@@ -316,7 +292,7 @@ export default function Navbar() {
             type="button"
             className="navbar-mobile-toggle"
             onClick={() => setMobileOpen((value) => !value)}
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
           >
             {mobileOpen ? (
@@ -363,9 +339,7 @@ export default function Navbar() {
                   className="navbar-mobile-trigger"
                 >
                   About Us
-                  <span className={mobileAboutOpen ? 'is-open' : ''}>
-                    ⌄
-                  </span>
+                  <span className={mobileAboutOpen ? "is-open" : ""}>⌄</span>
                 </button>
 
                 {mobileAboutOpen && (
@@ -389,18 +363,14 @@ export default function Navbar() {
                   className="navbar-mobile-trigger"
                 >
                   Our Services
-                  <span className={mobileServicesOpen ? 'is-open' : ''}>
-                    ⌄
-                  </span>
+                  <span className={mobileServicesOpen ? "is-open" : ""}>⌄</span>
                 </button>
 
                 {mobileServicesOpen && (
                   <div className="navbar-mobile-services">
                     {groupedServices.map((group) => (
                       <div key={group.title}>
-                        <p className="navbar-mobile-category">
-                          {group.title}
-                        </p>
+                        <p className="navbar-mobile-category">{group.title}</p>
 
                         <div className="navbar-mobile-service-list">
                           {group.items.map((service) => (
@@ -409,10 +379,7 @@ export default function Navbar() {
                               to={`/services#${service.slug}`}
                               onClick={closeAllMenus}
                             >
-                              <Icon
-                                name={service.icon}
-                                className="h-4 w-4"
-                              />
+                              <Icon name={service.icon} className="w-4 h-4" />
                               {service.title}
                             </Link>
                           ))}
@@ -453,18 +420,13 @@ export default function Navbar() {
 
       <CursorFollower />
     </>
-  )
+  );
 
   return (
     <>
       {createPortal(navbarContent, document.body)}
 
-      {!isHome && (
-        <div
-          aria-hidden="true"
-          className="navbar-spacer"
-        />
-      )}
+      {!isHome && <div aria-hidden="true" className="navbar-spacer" />}
     </>
-  )
+  );
 }
